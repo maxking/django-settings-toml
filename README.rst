@@ -2,7 +2,7 @@
 Django Settings Toml
 ====================
 
-This project is used to configure  `Django <https://www.djangoproject.com>`_ projects using a `toml <https://github.com/toml-lang/toml>`_ configuration file. This project chooses Toml over other configuration language becuase of it's simplicity and small specification. It is easier to understand and looks very much like INI-style config. We couldn't use INI-style because it is difficult to repsent data structures like dictionaries and lists, and there is no support for nesting.
+This project is used to configure  `Django <https://www.djangoproject.com>`_ projects using a `Toml <https://github.com/toml-lang/toml>`_ configuration file. This project chooses Toml over other configuration language becuase of it's simplicity and small specification. It is easier to understand and looks very much like INI-style config. We couldn't use INI-style because it is difficult to repsent data structures like dictionaries and lists, and there is no support for nesting.
 
 Usage
 =====
@@ -98,8 +98,8 @@ Example Settings
 Gotchas
 =======
 
-- Please make sure that you have writtena valid TOML, you can use 
-  `TOML Validator <https://github.com/vmchale/tomlcheck>`_ or 
+- Please make sure that you have writtena valid Toml, you can use 
+  `TOML Validator <https://github.com/BurntSushi/toml/tree/master/cmd/tomlv>`_ or 
   `tomlcheck <https://github.com/vmchale/tomlcheck>`_ tools to 
   validate the toml file.
 
