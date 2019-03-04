@@ -1,13 +1,12 @@
 Django Settings Toml
 ====================
 
-This project is used to set `Django <https://www.djangoproject.com>`_ using a
-proper configuration language as compared to ``settings.py`` definitions.
+This project is used to configure  `Django <https://www.djangoproject.com>`_ projects using a `toml <https://github.com/toml-lang/toml>`_ configuration file. This project chooses Toml over other configuration language becuase of it's simplicity and small specification. It is easier to understand and looks very much like INI-style config. We couldn't use INI-style because it is difficult to repsent data structures like dictionaries and lists, and there is no support for nesting.
 
 Usage
 =====
 
-Add the following to your ``settings.py`` file::
+To use this in your Django project, Add the following to your ``settings.py`` file::
 
   # settings.py
   from django_settings_toml import load_settings
