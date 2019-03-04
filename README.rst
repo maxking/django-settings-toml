@@ -103,10 +103,10 @@ Gotchas
   `tomlcheck <https://github.com/vmchale/tomlcheck>`_ tools to 
   validate the toml file.
 
-- Please make sure that all smiple `key=value` pairs are in the
-  root namespace (above any `[section]`) so that they don't get 
+- Please make sure that all smiple ``KEY = value`` pairs are in the
+  root namespace (above any ``[section]``) so that they don't get 
   swallowed under one of the maps or arrays. Previously, we have
-  seen `ImproperlyConfiguredError`s for missing keys that were
+  seen ``ImproperlyConfiguredError`` for missing keys that were
   actually defined in the toml file.
 
 LICENSE
