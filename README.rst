@@ -95,6 +95,20 @@ Example Settings
    format = '%(levelname)s %(asctime)s %(process)d %(name)s %(message)s'
 
 
+Gotchas
+=======
+
+- Please make sure that you have writtena valid TOML, you can use 
+  [TOML Validator](https://github.com/vmchale/tomlcheck) or 
+  [tomlcheck](https://github.com/vmchale/tomlcheck) tools to 
+  validate the toml file.
+
+- Please make sure that all smiple `key=value` pairs are in the
+  root namespace (above any `[section]`) so that they don't get 
+  swallowed under one of the maps or arrays. Previously, we have
+  seen `ImproperlyConfiguredError`s for missing keys that were
+  actually defined in the toml file.
+
 LICENSE
 =======
 
