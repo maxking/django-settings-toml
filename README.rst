@@ -1,7 +1,7 @@
 Django Settings Toml
 ====================
 
-This project is used to set `Django <https://www.djangoproject.com>` using a
+This project is used to set `Django <https://www.djangoproject.com>`_ using a
 proper configuration language as compared to ``settings.py`` definitions.
 
 Usage
