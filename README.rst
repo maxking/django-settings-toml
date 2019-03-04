@@ -15,6 +15,11 @@ To use this in your Django project, Add the following to your ``settings.py`` fi
   load_settings(__name__, ['/etc/project.toml', '~/.project.toml'])
 
 
+Then, you can run your django project like this::
+
+  $ DJANGO_SETTINGS_MODULE=project.settings django-admin runserver
+
+
 Example Settings
 ================
 ::
