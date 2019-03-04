@@ -9,29 +9,29 @@ Usage
 
 Add the following to your ``settings.py`` file::
 
-	# settings.py
-	from django_settings_toml import load_settings
+  # settings.py
+  from django_settings_toml import load_settings
 
-	load_settings(__name__, ['/etc/project.toml', '~/.project.toml'])
+  load_settings(__name__, ['/etc/project.toml', '~/.project.toml'])
 
 
 Example Settings
 ================
 ::
 
-	 # /etc/project.toml
-	 # SECURITY WARNING: keep the secret key used in production secret!
-	 SECRET_KEY = 'change-this-on-your-production-server'
+   # /etc/project.toml
+   # SECURITY WARNING: keep the secret key used in production secret!
+   SECRET_KEY = 'change-this-on-your-production-server'
 
-	 # SECURITY WARNING: don't run with debug turned on in production!
-	 DEBUG = false
+   # SECURITY WARNING: don't run with debug turned on in production!
+   DEBUG = false
 
-	 ADMINS = [
+   ADMINS = [
    ['Mailman Suite Admin', 'root@localhost'],
-	 ]
+   ]
 
-	 # Application definition
-	 INSTALLED_APPS = [
+   # Application definition
+   INSTALLED_APPS = [
    'django.contrib.admin',
    'django.contrib.auth',
    'django.contrib.contenttypes',
@@ -42,9 +42,9 @@ Example Settings
    'rest_framework',
    'django_q',
    'allauth',
-	 ]
+   ]
 
-	 MIDDLEWARE = [
+   MIDDLEWARE = [
    'django.contrib.sessions.middleware.SessionMiddleware',
    'django.middleware.common.CommonMiddleware',
    'django.middleware.csrf.CsrfViewMiddleware',
@@ -53,41 +53,41 @@ Example Settings
    'django.contrib.messages.middleware.MessageMiddleware',
    'django.middleware.clickjacking.XFrameOptionsMiddleware',
    'django.middleware.security.SecurityMiddleware',
-	 ]
+   ]
 
-	 ROOT_URLCONF = 'project.urls'
+   ROOT_URLCONF = 'project.urls'
 
-	 WSGI_APPLICATION = 'project.wsgi.application'
+   WSGI_APPLICATION = 'project.wsgi.application'
 
-	 [DATABASES.default]
-	 ENGINE = 'django.db.backends.sqlite3'
-	 NAME = 'mailmansuite.db'
+   [DATABASES.default]
+   ENGINE = 'django.db.backends.sqlite3'
+   NAME = 'mailmansuite.db'
 
-	 [LOGGING]
-	 version = 1
-	 disable_existing_loggers = false
+   [LOGGING]
+   version = 1
+   disable_existing_loggers = false
 
-	 [LOGGING.filters.require_debug_false]
-	 '()' = 'django.utils.log.RequireDebugFalse'
+   [LOGGING.filters.require_debug_false]
+   '()' = 'django.utils.log.RequireDebugFalse'
 
-	 [LOGGING.handlers.mail_admins]
-	 level = 'ERROR'
-	 filters = ['require_debug_false']
-	 class =  'django.utils.log.AdminEmailHandler'
+   [LOGGING.handlers.mail_admins]
+   level = 'ERROR'
+   filters = ['require_debug_false']
+   class =  'django.utils.log.AdminEmailHandler'
 
-	 [LOGGING.handlers.file]
-	 level = 'INFO'
-	 class = 'logging.handlers.WatchedFileHandler'
-	 filename =  'logs/mailmansuite.log'
-	 formatter = 'verbose'
+   [LOGGING.handlers.file]
+   level = 'INFO'
+   class = 'logging.handlers.WatchedFileHandler'
+   filename =  'logs/mailmansuite.log'
+   formatter = 'verbose'
 
-	 [LOGGING.loggers."django.request"]
-	 handlers = ['mail_admins', 'file']
-	 level = 'ERROR'
-	 propagate = true
+   [LOGGING.loggers."django.request"]
+   handlers = ['mail_admins', 'file']
+   level = 'ERROR'
+   propagate = true
 
-	 [LOGGING.formatters.verbose]
-	 format = '%(levelname)s %(asctime)s %(process)d %(name)s %(message)s'
+   [LOGGING.formatters.verbose]
+   format = '%(levelname)s %(asctime)s %(process)d %(name)s %(message)s'
 
 
 LICENSE
