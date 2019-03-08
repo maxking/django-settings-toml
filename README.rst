@@ -4,6 +4,14 @@ Django Settings Toml
 
 This project is used to configure  `Django <https://www.djangoproject.com>`_ projects using a `Toml <https://github.com/toml-lang/toml>`_ configuration file. This project chooses Toml over other configuration language becuase of it's simplicity and small specification. It is easier to understand and looks very much like INI-style config. We couldn't use INI-style because it is difficult to repsent data structures like dictionaries and lists, and there is no support for nesting.
 
+Changelog
+=========
+
+0.0.2
+------
+- Add support for variable substitution using ``${VAR}`` syntax in values.
+
+
 Usage
 =====
 
@@ -18,6 +26,31 @@ To use this in your Django project, Add the following to your ``settings.py`` fi
 Then, you can run your django project like this::
 
   $ DJANGO_SETTINGS_MODULE=project.settings django-admin runserver
+
+
+Variable Substitution
+---------------------
+
+Values can refer to other keys defined in the same file using ``${VAR}``
+syntax. For example::
+
+
+	# /etc/project.toml
+
+	HOSTNAME = 'domain.local'
+
+	EMAIL1 = 'aperson@${HOSTNAME}'
+
+	EMAIL2 = 'bperson@${HOSTNAME}'
+
+
+In the above example, the value of ``EMAIL1 = 'aperson@domain.local`` and
+similar for ``EMAIL2``.
+
+If they variables that are being referred to aren't defined, the template is
+left as-is and doesn't raise any errors. For example, in the above example, if
+``HOSTNAME`` wasn't defined, the value will be ``EMAIL1 =
+'aperson@${HOSTNAME}``.
 
 
 Example Settings
@@ -64,6 +97,10 @@ Example Settings
 
    WSGI_APPLICATION = 'project.wsgi.application'
 
+   HOSTNAME = 'project.local'
+
+   EMAIL_NAME = 'project1@${HOSTNAME}'
+
    [DATABASES.default]
    ENGINE = 'django.db.backends.sqlite3'
    NAME = 'mailmansuite.db'
@@ -98,13 +135,13 @@ Example Settings
 Gotchas
 =======
 
-- Please make sure that you have writtena valid Toml, you can use 
-  `TOML Validator <https://github.com/BurntSushi/toml/tree/master/cmd/tomlv>`_ or 
-  `tomlcheck <https://github.com/vmchale/tomlcheck>`_ tools to 
+- Please make sure that you have writtena valid Toml, you can use
+  `TOML Validator <https://github.com/BurntSushi/toml/tree/master/cmd/tomlv>`_ or
+  `tomlcheck <https://github.com/vmchale/tomlcheck>`_ tools to
   validate the toml file.
 
 - Please make sure that all smiple ``KEY = value`` pairs are in the
-  root namespace (above any ``[section]``) so that they don't get 
+  root namespace (above any ``[section]``) so that they don't get
   swallowed under one of the maps or arrays. Previously, we have
   seen ``ImproperlyConfiguredError`` for missing keys that were
   actually defined in the toml file.

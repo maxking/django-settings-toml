@@ -2,13 +2,19 @@ import sys
 import toml
 
 from pathlib import Path
+from string import Template
 
 
-def _update_settings(self, module_name, extra_settings):
-    module = sys.modules[module_name]
+def update_settings(module_name, extra_settings):
+    try:
+        module = sys.modules[module_name]
+    except KeyError:
+        __import__(module_name)
+        module = sys.modules[module_name]
 
     for (member, value) in extra_settings.items():
         if member.isupper() and not member.startswith('_'):
+            value = Template(value).safe_substitute(**extra_settings)
             setattr(module, member, value)
 
 
@@ -34,7 +40,7 @@ def load_settings(module_name, settings_paths):
 
     with open(settings_path) as fd:
         try:
-            self._update_settings(
+            update_settings(
                 module_name, toml.load(fd))
         except toml.decoder.TomlDecodeError as error:
             print('Invalid TOML configuration file: {}'.format(settings_path))
