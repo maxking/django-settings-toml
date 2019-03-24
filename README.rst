@@ -6,6 +6,9 @@ This project is used to configure  `Django <https://www.djangoproject.com>`_ pro
 
 Changelog
 =========
+0.0.3
+-----
+- Fix packaging for the new release.
 
 0.0.2
 ------
