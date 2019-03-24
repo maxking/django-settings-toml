@@ -1,7 +1,24 @@
 language: python
+python:
+  - "3.5"
+  - "3.5-dev"  # 3.5 development branch
+  - "3.6"
+  - "3.6-dev"  # 3.6 development branch
+  - "3.7"
+  - "3.7-dev"  # 3.7 development branch
+  - "3.8-dev"
+  - "pypy3.5"
+  - "nightly"
+
+env:
+  - DJANGO_VERSION=1.12
+  - DJANGO_VERSION=2.1
+  - DJANGO_VERSION=2.2
 
 install:
-  - pip install tox
+  - pip install -q Django<$DJANGO_VERSION
+  - python setup.py -q install
+  - pip install pytest
 
 script:
-  - tox
+  - pytest
