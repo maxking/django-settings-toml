@@ -6,6 +6,11 @@ This project is used to configure  `Django <https://www.djangoproject.com>`_ pro
 
 Changelog
 =========
+0.0.4
+-----
+- Add support for Substitution in maps and lists.
+- Fix loading settings where values are non-string which caused TypeError in v0.0.3.
+
 0.0.3
 -----
 - Fix packaging for the new release.
@@ -38,13 +43,13 @@ Values can refer to other keys defined in the same file using ``${VAR}``
 syntax. For example::
 
 
-	# /etc/project.toml
+  # /etc/project.toml
 
-	HOSTNAME = 'domain.local'
+  HOSTNAME = 'domain.local'
 
-	EMAIL1 = 'aperson@${HOSTNAME}'
+  EMAIL1 = 'aperson@${HOSTNAME}'
 
-	EMAIL2 = 'bperson@${HOSTNAME}'
+  EMAIL2 = 'bperson@${HOSTNAME}'
 
 
 In the above example, the value of ``EMAIL1 = 'aperson@domain.local`` and
